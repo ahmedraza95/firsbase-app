@@ -1,3 +1,13 @@
+const toastTrigger = document.querySelector('#btnSubmit');
+const toastLiveExample = document.getElementById('liveToast');
+
+
+if (toastTrigger) {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastTrigger.addEventListener('auto', () => {
+        toastBootstrap.show()
+    })
+}
 import { auth, onAuthStateChanged, signOut } from "../js/firebase.js";
 console.log('dsds');
 
@@ -7,7 +17,8 @@ let divEmail = document.querySelector(".text");
 
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if (user.email === "ahmedhome6789@gmail.com") {
+        window.location = "../adminData/adminpanel.html";
         console.log("hello");
         console.log(user);
         let emailUser = user.email;
@@ -20,8 +31,11 @@ onAuthStateChanged(auth, (user) => {
         let result = user.metadata.lastLoginAt;
         let minutes = Math.floor((1722170001218 / (1000 * 60 * 60)) / (1000 * 60));
         console.log(minutes);
-    } else {
+    } else if (user) {
+        window.location = "../pages/dashboard.html";
+    }else {
         window.location = "../pages/login.html";
+
     }
 });
 
