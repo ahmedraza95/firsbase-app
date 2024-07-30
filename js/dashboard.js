@@ -9,33 +9,34 @@ if (toastTrigger) {
     })
 }
 import { auth, onAuthStateChanged, signOut } from "../js/firebase.js";
-console.log('dsds');
 
 let btn = document.querySelector(".btnDropdown");
 let ProfileNameDiv = document.querySelector(".nameLogo")
 let divEmail = document.querySelector(".text");
-
+// onAuthStateChanged(auth, (user) => {
+//     console.log(user);
+// });
 
 onAuthStateChanged(auth, (user) => {
-    if (user.email === "ahmedhome6789@gmail.com") {
-        window.location = "../adminData/adminpanel.html";
-        console.log("hello");
-        console.log(user);
-        let emailUser = user.email;
-        let emailcom = emailUser.substr(emailUser.length - 10);
-        let ProfileName = emailUser.slice(0,1).toUpperCase();
-        ProfileNameDiv.innerHTML = `<b>${ProfileName}</b>`
-        emailUser = `${emailUser.slice(0,3)}****${emailcom}`
+    try {
 
-        divEmail.innerText = emailUser;
-        let result = user.metadata.lastLoginAt;
-        let minutes = Math.floor((1722170001218 / (1000 * 60 * 60)) / (1000 * 60));
-        console.log(minutes);
-    } else if (user) {
-        window.location = "../pages/dashboard.html";
-    }else {
-        window.location = "../pages/login.html";
-
+        if (user.email === "ahmedhome6789@gmail.com") {
+            window.location = "../adminData/adminpanel.html";
+            // console.log(user.email);
+        } else if (user) {
+            console.log(user);
+            let emailUser = user.email;
+            let emailcom = emailUser.substr(emailUser.length - 10);
+            let ProfileName = emailUser.slice(0, 1).toUpperCase();
+            ProfileNameDiv.innerHTML = `<b>${ProfileName}</b>`
+            emailUser = `${emailUser.slice(0, 3)}****${emailcom}`
+            divEmail.innerText = emailUser;
+        }
+    }
+    catch (error) {
+        console.log(error);
+            window.location = "../pages/login.html";
+            console.log("hello");
     }
 });
 
