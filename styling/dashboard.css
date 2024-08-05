@@ -11,6 +11,7 @@
     align-items: center;
     font-size: 18px;
 }
+
 .btnDropdown {
     width: 100%;
     background-color: white;
@@ -30,6 +31,7 @@
     /* outline: none; */
     color: white;
 }
+
 header h1 {
     color: white;
 }
@@ -41,4 +43,45 @@ header {
     border: none;
     outline: none;
     justify-content: space-around;
+}
+
+/* img  */
+/* From Uiverse.io by Yaya12085 */
+/* From Uiverse.io by simontheonlyone */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form input {
+    margin-top: 2%;
+}
+
+form button {
+    margin-top: 4%;
+    border: none;
+    background-color: black;
+    color: white;
+    width: 10%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* img  */
+
+#divall {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.borders {
+    width: 48%;
+    border: 1px solid black;
+
 }
