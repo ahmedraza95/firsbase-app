@@ -92,24 +92,28 @@ productform.addEventListener("submit", async (e) => {
         console.log("e");
 
     }
-
 });
 onSnapshot(myCollectionReference, (doc) => {
     div.innerHTML = "";
-
+    
     doc.docs.forEach((eachDoc, index) => {
-
+        
         const product = eachDoc.data();
+        const date = product.createdAt
+            ? dateFns.formatDistance(product.createdAt?.toDate(), new Date(), {
+                addSuffix: true,
+            })
+            : "";
         console.log(product);
 
 
         div.innerHTML += `<div class="borders">
     ${index + 1}
+    <div class="productimg"><img src=${product.img}></div>
     <h3>${product.name}</h3>
-    <span>${product.createdAt?.toDate()}</span>
+    <span>${date}</span>
     <p class="price">Rs.${product.price}</p>
     <p>${product.details}</p>
-    <div><img src=${product.img} width="10%"></div>
   </div>`;
     });
 
